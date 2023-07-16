@@ -1,0 +1,289 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+* {
+    font-family: 'Bebas Neue';
+}
+
+body {
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    background: #cbcbcb;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+
+/* Common styles for both pages */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.image-link {
+    position: relative;
+    text-decoration: none;
+}
+
+.image {
+    transition: transform 0.3s ease;
+    width: 250px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.image.expanded {
+    animation: expand-image 0.5s ease-in;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    object-fit: cover;
+
+}
+
+@keyframes expand-image {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.fade-in {
+    animation: fade-in 0.5s ease both;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Styles for the first page (index.html) */
+
+/* No additional styles needed for the first page */
+
+/* Styles for the second page (seconde_page.html) */
+
+body {
+    opacity: 0;
+    animation: fade-in 0.5s ease forwards;
+}
+
+header {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    animation: shrink-header 0.5s ease forwards;
+    animation-delay: 0.5s;
+}
+
+
+@keyframes shrink-header {
+    0% {
+        transform: scale(2);
+        width: 100vw;
+        height: 100vh;
+    }
+
+    100% {
+        transform: scale(1);
+        width: 100vw;
+        height: 25vh;
+    }
+}
+
+.header-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    opacity: 1;
+    animation: shrink-image 0.5s ease forwards;
+    animation-delay: 0.5s;
+    object-fit: cover;
+    /* Delay the animation to start after the fade-in animation */
+}
+
+@keyframes shrink-image {
+    0% {
+        z-index: 9999;
+        transform: scale(2);
+    }
+
+    100% {
+        /* the image will take the size of th header*/
+        z-index: -1;
+        transform: scale(1);
+        width: 100vw;
+        height: 25vh;
+
+    }
+}
+
+.page-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    font-size: 5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: fade-in 1s ease forwards;
+    animation-delay: 1s;
+    /* Delay the animation to start after the fade-in and image shrink animations */
+}
+
+.content {
+    padding: 20px;
+    /* Add any additional styles for the content of the second page */
+}
